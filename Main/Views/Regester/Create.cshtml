@@ -1,0 +1,346 @@
+﻿@model sql4.Models.ad
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@{
+    Layout = "~/Views/Shared/after login.cshtml";
+}
+
+
+
+@Styles.Render("~/Content/ai.css")
+@Styles.Render("~/Content/pk.css")
+@Styles.Render("~/Content/compk.css")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+
+
+
+
+<div class="columns app">
+    <section class="widecolumn">
+
+        <div id="err_cleared_by" class="error_label" style="display: none">
+            <span class="msg_warning nohistory"></span>
+        </div>
+        <div class="form">
+
+
+
+
+
+
+
+
+
+
+            @using (Html.BeginForm("Create", null, FormMethod.Post,  new { enctype = "multipart/form-data" })
+                              )
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+
+
+
+
+
+
+
+
+
+                <fieldset>
+
+                    <!-- heading: NEWAD_HEADING_AD_DETAILS -->
+                    <h2 class="newadheading">
+                        Details about your item
+                    </h2>
+
+
+
+                    <!-------------------------------------Ctagaory-->
+
+
+
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.catagory)
+                        </div>
+                        <div class="col_right" style="color:red">
+
+
+                            <div class="selectbox">
+
+                                @Html.DropDownGroupList("catagory", new List<GroupedSelectListItem>(){
+
+
+          new GroupedSelectListItem() { Value="Cell Phones", Text="Cell Phones", GroupName="Electronics" },
+          new GroupedSelectListItem() { Value="Refrigrator", Text="Refrigrator",GroupName="Electronics" } ,
+           new GroupedSelectListItem() { Value="Home Appliences", Text="Home Aplliences",GroupName="Electronics" } ,
+          new GroupedSelectListItem() { Value="Sofa", Text="Sofa", GroupName="Furniture",GroupKey="2" },
+          new GroupedSelectListItem() { Value="Bed", Text="Bed", GroupName="Furniture",GroupKey="2" },
+            new GroupedSelectListItem() { Value="Car", Text="Car", GroupName="AutoMobiles",GroupKey="3" },
+              new GroupedSelectListItem() { Value="Bike", Text="Bike", GroupName="AutoMobiles",GroupKey="3" },
+                   new GroupedSelectListItem() { Value="Horse", Text="Horse", GroupName="Animal",GroupKey="4" },
+              new GroupedSelectListItem() { Value="Laptops", Text="Laptops", GroupName="Gadegts",GroupKey="5" },
+
+
+
+       }, "-- Select Catagory --", new { @class = "category_group" })
+
+                            </div>
+                            <div class="col_right">
+                                @Html.ValidationMessageFor(model => model.catagory)
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <!-------------------------------------->
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.title)
+                        </div>
+                        <div class="col_right" style="color:red">
+                            @Html.EditorFor(model => model.title)
+                            @Html.ValidationMessageFor(model => model.title)
+                        </div>
+                    </div>
+
+
+
+
+                    <!-----------------------description----------------->
+
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.description)
+                        </div>
+                        <div class="col_right" style="color:red">
+                            @Html.TextAreaFor(model => model.description, new { @class = "body", @cols = 45, @rows = 10 })
+                            @Html.ValidationMessageFor(model => model.description)
+                        </div>
+                    </div>
+
+                    <!---------price------>
+
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.price)
+                        </div>
+                        <div class="col_right" style="color:red">
+                            @Html.EditorFor(model => model.price)
+                            @Html.ValidationMessageFor(model => model.price)
+                        </div>
+                    </div>
+                    <!-------------Area---------------->
+                    <div class="row row-region">
+                        <div class="row input">
+                            <div class="col_left">
+
+
+
+                                @Html.LabelFor(model => model.area_id, "area")
+
+
+                                <small id="param-region-optional" class="optional hidden">(recommended)</small>
+                            </div>
+                            <div class="col_right" style="color:red">
+                                <div class="selectbox">
+
+                                    @Html.DropDownList("area_id", ViewBag.StateId as SelectList, "Select a State", new { id = "State" })<br />
+
+
+
+                                </div>
+                                <div id="err_region" class="error_label" style="display: none">
+                                    <span class="msg_warning nohistory"></span>
+                                </div>
+
+                                <p id="region_tips" class="msg_warning hidden">
+
+                                </p>
+                                @Html.ValidationMessageFor(model => model.area_id)
+
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row input" id="area_inputs">
+                            <div class="col_left">
+
+                                <label for="area">City:</label>
+
+
+
+
+
+                                <small id="param-area-optional" class="optional hidden">(recommended)</small>
+                            </div>
+                            <div class="col_right" style="color:red">
+                                <div class="selectbox">
+                                    <div class="editor-field">
+                                        @Html.DropDownList("cityId", ViewBag.cityId as SelectList, "Select a city", new { id = "city" })<br />
+
+                                    </div>
+
+
+                                </div>
+                                <span id="area_fixed" class="hidden"></span>
+                                <div id="info_area" class="msg_warning hidden"></div>
+                                <div id="err_area" class="error_label" style="display: none">
+                                    <span class="msg_warning nohistory"></span>
+                                </div>
+                                @Html.ValidationMessageFor(model => model.cityId)
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                        <!------------------Images--------->
+
+
+                        <div class="row input">
+                            <div class="col_left">
+
+                                <h3>Images</h3>
+                            </div>
+
+                            <div class="col_right">
+
+
+                                @Html.TextBoxFor(model => model.Photo, new { type = "file" })
+
+                                <div class="col_right" style="color:red">
+                                    @Html.ValidationMessageFor(model => model.Photo)
+                                </div>
+
+
+
+                                @Html.TextBoxFor(model => model.Photo1, new { type = "file" })
+
+                                <div class=" col_right" style="color:red">
+                                    @Html.ValidationMessageFor(model => model.Photo1)
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-------------------------Phone-->
+
+
+
+
+
+                        <div class="row input">
+                            <div class="col_left">
+                                @Html.LabelFor(model => model.phone)
+                            </div>
+
+                            <div class="col_right" style="color:red">
+                                @Html.EditorFor(model => model.phone)
+
+                                <div class="create_input_info" style="color:black">(Started from 0)<br>Please enter a valid cell phone number.</div>
+                                @Html.ValidationMessageFor(model => model.phone)
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+                        <div class="row input">
+                            <div class="col_left">
+
+
+
+                            </div>
+                            <div class="col_right">
+
+                                <input type="submit" value="Create" />
+                            </div>
+                        </div>
+</fieldset>
+            }
+
+        </div>
+    </section>
+
+
+    <aside class="sidebar">
+
+
+
+
+
+
+        <div class="side_box">
+            <h3>How to sell quickly?</h3>
+            <ul class="bullets">
+                <li class="list">Keep a brief title and full description of the item</li>
+                <li class="list">Add photos to your ad</li>
+                <li class="list">Put a reasonable price</li>
+            </ul>
+        </div>
+        <div class="side_box">
+            <h3>Quick rules</h3>
+            <ul class="bullets">
+                <li class="list">Do not post the same ad repeatedly</li>
+                <li class="list">Do not include link to the site in the text and photo ads</li>
+                <li class="list">Do not sell <>prohibited goods</li>
+                <li class="list">All the rules Should be followed</li>
+            </ul>
+        </div>
+
+
+
+
+
+    </aside>
+
+</div>
+
+
+
+    </div>
+
+<div>
+    @Html.ActionLink("Back to List", "/AfterLogin")
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+<script type="text/jscript">
+    $(function () {
+
+
+        $('#State').change(function () {
+            $.getJSON('/ad/Citylist/' + $('#State').val(), function (data) {
+                var items = '<option>Select a City</option>';
+                $.each(data, function (i, city) {
+                    items += "<option value='" + city.Value + "'>" + city.Text + "</option>";
+                });
+                $('#city').html(items);
+            });
+        });
+    });
+</script>
+
+

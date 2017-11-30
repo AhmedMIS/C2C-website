@@ -1,0 +1,141 @@
+﻿@model sql4.Models.ad
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    @Styles.Render("~/Content/comPk.css")
+    @Styles.Render("~/Content/link.css")
+    @Styles.Render("~/Content/Pk.css")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<div id="list_item_thumbs">
+
+   
+    <div class="item">
+        <a class="item_link" href="/ad/Details/@Model.ad_id"></a>
+
+        <abbr class="date dtstart value item_age" title="@Model.title">
+            <br>@Model.date
+        </abbr>
+        <a lang="" class="item_img" tabindex="1" href="">
+
+            <img src="/Images/@Model.url1" title="@Model.title" alt="">
+
+        </a>
+        <div class="item_info">
+
+            <h3 class="ellipsis item_subject"><a href="">@Model.title</a></h3>
+
+            <p class="item_teaser">
+              @Model.description 
+            </p>
+
+            <div class="item_segments clean_links nohistory">
+                <small>
+
+
+                    @Model.catagory &amp; @Model.title,
+
+
+
+
+                   @Model.city.cityName<br />
+
+
+                
+                      
+                    
+                    -
+                </small>
+
+            
+
+
+                      
+                
+
+
+
+            </div>
+        </div>
+
+        <div class="item_price">
+            <span class="price_span">
+
+
+
+
+
+
+
+
+
+
+                <span class="price_value" dir="ltr">@Model.price.ToString("#,##0")</span>
+                Rs
+
+
+
+
+
+
+
+
+            </span>
+        </div>
+
+
+    </div>
+
+</div>

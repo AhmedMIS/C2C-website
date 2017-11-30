@@ -1,0 +1,65 @@
+﻿@model sql4.Models.ad
+
+
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    @Styles.Render("~/Content/mainp.css")
+    @Styles.Render("~/Content/pk.css")
+
+
+
+
+
+
+
+
+</head>
+
+
+<div class="post-block-out">
+
+    <div class="post-block" style="background-image: url(/Images/block_topbg.gif);">
+
+
+        <div class="post-right full" style="margin-right:20px;">
+            <div class="post-left" style="padding-bottom:35px;">
+
+
+
+                <a href="Action/auction?id=@Model.ad_id" title="@Model.title" class="preview" data-rel="">
+                    <img width="75" height="75" src="/Images/@Model.url1" class="attachment-ad-thumb" alt="Cash � American VI: Ain�t No Grave" />
+                </a>
+            </div>
+            <div class="price-wrap">
+                <span class="tag-head" style="background-image: url(/Images/price-tag-head.png)">&nbsp;</span><p class="post-price">Rs:</p>
+            </div>
+
+
+            <h3><a href="http://demos.appthemes.com/classipress/ads/cash-american-vi-aint-no-grave/">@Model.title</a></h3>
+            <p style="float:left">@Model.description</p>
+            <div class="clr"></div>
+
+
+            <div class="clr"></div>
+
+
+            <p class="post-meta">
+                <span class="folder"><a href="http://demos.appthemes.com/classipress/ad-category/music/other-formats/" rel="tag">Other Formats</a></span> | <span class="owner"><a href="http://demos.appthemes.com/classipress/author/meloniq/" title="Posts by meloniq" rel="author">meloniq</a></span> | <span class="clock"><span>June 28, 2013</span></span>
+            </p>
+
+
+
+
+
+
+        </div>
+
+        <div class="clr"></div>
+
+
+
+    </div>
+</div>

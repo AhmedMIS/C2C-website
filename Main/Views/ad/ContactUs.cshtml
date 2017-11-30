@@ -1,0 +1,191 @@
+﻿@model sql4.Models.send
+
+@{
+    ViewBag.Title = "rules";
+}
+
+@{
+    ViewBag.Title = "rules";
+}
+@{
+    Layout = "~/Views/Shared/cus_lay.cshtml";
+}
+
+
+
+
+
+<div id="wrapper">
+
+
+    <div class="info">
+        <section class="widecolumn">
+
+
+            @using (Html.BeginForm("contactUs", null, FormMethod.Post
+                            ))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+
+
+
+
+
+
+
+
+
+                <fieldset>
+
+                    <!-- heading: NEWAD_HEADING_AD_DETAILS -->
+                    <h2 class="newadheading">
+                        Write Your Suggestion
+                    </h2>
+
+
+
+                    <!-------------------------------------Ctagaory-->
+                    <!---------------------Name----------------->
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.Label("Subject")
+                        </div>
+                        <div class="col_right">
+                            @Html.EditorFor(model => model.title)
+                            @Html.ValidationMessageFor(model => model.title)
+                        </div>
+                    </div>
+
+
+
+
+                    <!-----------------------description----------------->
+                    <!-----------------------description----------------->
+
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.description)
+                        </div>
+                        <div class="col_right">
+                            @Html.TextAreaFor(model => model.description, new { @class = "body", @cols = 45, @rows = 10 })
+                            @Html.ValidationMessageFor(model => model.description)
+                        </div>
+                    </div>
+
+
+                    <!---------price------>
+                    <!-------------Area---------------->
+                    <!-----------------City-->
+                    <!------------------Images--------->
+                    <!-------------------------Name-->
+
+
+                    <div class="row input">
+                        <div class="col_left">
+
+                            @Html.LabelFor(model => model.name)
+                        </div>
+
+                        <div class="col_right">
+
+                            @Html.EditorFor(model => model.name)
+                            @Html.ValidationMessageFor(model => model.name)
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.e_mail)
+                        </div>
+
+                        <div class="col_right">
+                            @Html.EditorFor(model => model.e_mail)
+                            @Html.ValidationMessageFor(model => model.e_mail)
+                        </div>
+                    </div>
+
+
+
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.phone)
+                        </div>
+
+                        <div class="col_right">
+                            @Html.EditorFor(model => model.phone)
+                            @Html.ValidationMessageFor(model => model.phone)
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="row input">
+                        <div class="col_left">
+
+
+
+                        </div>
+                        <div class="col_right">
+
+                            <input type="submit" value="Send" />
+                        </div>
+                    </div>
+                </fieldset>
+            }
+</section>
+    
+  
+   
+
+
+    <aside class="sidecolumn">
+        <strong>Contact Us</strong>
+        <ul class="bullets">
+
+            <li class="list">
+                <a href="/ad/s_goods">When sending goods</a>
+
+            </li>
+
+            <li class="list">
+                <a href="/ad/vehicles">Vehicles</a>
+
+            </li>
+            <li class="list">
+                <a href="/ad/BrandItem">Branded items and software</a>
+
+            </li>
+            <li class="list">
+                <a href="/ad/SendingAbroad">Sending money or goods abroad</a>
+
+            </li>
+            <li class="list">
+                <a href="/ad/Tmoney">Transferring money</a>
+
+            </li>
+           
+        </ul>
+        <br>
+        <br>
+        <div class="shopsafely">
+        </div>
+
+    </aside>
+</div>
+
+
+</div>
+
+
+<a href="/ad">BACK TO LIST</a>

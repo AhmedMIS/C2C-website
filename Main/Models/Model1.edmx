@@ -1,0 +1,553 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BSEntities7.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="ads">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="area_id" Type="int" Nullable="false" />
+          <Property Name="catagory" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="varchar(max)" Nullable="false" />
+          <Property Name="cityId" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="e_mail" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="url1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="url2" Type="image" />
+          <Property Name="url3" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="money" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+          <Property Name="view" Type="int" />
+        </EntityType>
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="area_id" />
+          </Key>
+          <Property Name="area_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="70" Nullable="false" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="cityId" />
+          </Key>
+          <Property Name="cityId" Type="int" Nullable="false" />
+          <Property Name="cityName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="area_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Iuser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Scat" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sitem" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sphone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="area" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adId" Type="int" />
+          <Property Name="complain" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="path" Type="varchar(max)" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="e_mail" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="enable" Type="bit" />
+          <Property Name="cpass" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="view">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="VId" Type="int" Nullable="false" />
+          <Property Name="ad_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ads_area">
+          <End Role="area" Type="Self.area" Multiplicity="1" />
+          <End Role="ads" Type="Self.ads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="area_id" />
+            </Principal>
+            <Dependent Role="ads">
+              <PropertyRef Name="area_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ads_city">
+          <End Role="city" Type="Self.city" Multiplicity="1" />
+          <End Role="ads" Type="Self.ads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="cityId" />
+            </Principal>
+            <Dependent Role="ads">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ads_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="ads" Type="Self.ads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="ads">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_city_area">
+          <End Role="area" Type="Self.area" Multiplicity="1" />
+          <End Role="city" Type="Self.city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="area_id" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="area_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Iuser_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="Iuser" Type="Self.Iuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Iuser">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_report_ad">
+          <End Role="ads" Type="Self.ads" Multiplicity="0..1" />
+          <End Role="report" Type="Self.report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ads">
+              <PropertyRef Name="ad_id" />
+            </Principal>
+            <Dependent Role="report">
+              <PropertyRef Name="adId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_view_ads">
+          <End Role="ads" Type="Self.ads" Multiplicity="1" />
+          <End Role="view" Type="Self.view" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ads">
+              <PropertyRef Name="ad_id" />
+            </Principal>
+            <Dependent Role="view">
+              <PropertyRef Name="ad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BSEntities7StoreContainer">
+          <EntitySet Name="ads" EntityType="Self.ads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="area" EntityType="Self.area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="city" EntityType="Self.city" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Iuser" EntityType="Self.Iuser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="report" EntityType="Self.report" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="view" EntityType="Self.view" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ads_area" Association="Self.FK_ads_area">
+            <End Role="area" EntitySet="area" />
+            <End Role="ads" EntitySet="ads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ads_city" Association="Self.FK_ads_city">
+            <End Role="city" EntitySet="city" />
+            <End Role="ads" EntitySet="ads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ads_user" Association="Self.FK_ads_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="ads" EntitySet="ads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_city_area" Association="Self.FK_city_area">
+            <End Role="area" EntitySet="area" />
+            <End Role="city" EntitySet="city" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Iuser_user" Association="Self.FK_Iuser_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="Iuser" EntitySet="Iuser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_report_ad" Association="Self.FK_report_ad">
+            <End Role="ads" EntitySet="ads" />
+            <End Role="report" EntitySet="report" />
+          </AssociationSet>
+          <AssociationSet Name="FK_view_ads" Association="Self.FK_view_ads">
+            <End Role="ads" EntitySet="ads" />
+            <End Role="view" EntitySet="view" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BSEntities7" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="ad">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="area_id" Type="Int32" Nullable="false" />
+          <Property Name="catagory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cityId" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="e_mail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="url1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="url2" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="url3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="area" Relationship="Self.FK_ads_area" FromRole="ads" ToRole="area" />
+          <NavigationProperty Name="city" Relationship="Self.FK_ads_city" FromRole="ads" ToRole="city" />
+          <NavigationProperty Name="user" Relationship="Self.FK_ads_user" FromRole="ads" ToRole="user" />
+          <Property Name="view" Type="Int32" />
+          <NavigationProperty Name="view1" Relationship="BSEntities7.FK_view_ads" FromRole="ad" ToRole="view" />
+          <NavigationProperty Name="reports" Relationship="BSEntities7.FK_report_ad" FromRole="ad" ToRole="report" />
+        </EntityType>
+        <EntityType Name="area">
+          <Key>
+            <PropertyRef Name="area_id" />
+          </Key>
+          <Property Name="area_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ads" Relationship="Self.FK_ads_area" FromRole="area" ToRole="ads" />
+          <NavigationProperty Name="cities" Relationship="Self.FK_city_area" FromRole="area" ToRole="city" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="cityId" />
+          </Key>
+          <Property Name="cityId" Type="Int32" Nullable="false" />
+          <Property Name="cityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="area_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ads" Relationship="Self.FK_ads_city" FromRole="city" ToRole="ads" />
+          <NavigationProperty Name="area" Relationship="Self.FK_city_area" FromRole="city" ToRole="area" />
+        </EntityType>
+        <EntityType Name="Iuser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Scat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sitem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sphone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Self.FK_Iuser_user" FromRole="Iuser" ToRole="user" />
+        </EntityType>
+        <EntityType Name="report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="adId" Type="Int32" />
+          <Property Name="complain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ad" Relationship="BSEntities7.FK_report_ad" FromRole="report" ToRole="ad" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="e_mail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="enable" Type="Boolean" />
+          <Property Name="cpass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ads" Relationship="Self.FK_ads_user" FromRole="user" ToRole="ads" />
+          <NavigationProperty Name="Iusers" Relationship="Self.FK_Iuser_user" FromRole="user" ToRole="Iuser" />
+        </EntityType>
+        <Association Name="FK_ads_area">
+          <End Role="area" Type="Self.area" Multiplicity="1" />
+          <End Role="ads" Type="Self.ad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="area_id" />
+            </Principal>
+            <Dependent Role="ads">
+              <PropertyRef Name="area_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ads_city">
+          <End Role="city" Type="Self.city" Multiplicity="1" />
+          <End Role="ads" Type="Self.ad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="city">
+              <PropertyRef Name="cityId" />
+            </Principal>
+            <Dependent Role="ads">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ads_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="ads" Type="Self.ad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="ads">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_city_area">
+          <End Role="area" Type="Self.area" Multiplicity="1" />
+          <End Role="city" Type="Self.city" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="area">
+              <PropertyRef Name="area_id" />
+            </Principal>
+            <Dependent Role="city">
+              <PropertyRef Name="area_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Iuser_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="Iuser" Type="Self.Iuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Iuser">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BSEntities8" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ads" EntityType="Self.ad" />
+          <EntitySet Name="areas" EntityType="Self.area" />
+          <EntitySet Name="cities" EntityType="Self.city" />
+          <EntitySet Name="Iusers" EntityType="Self.Iuser" />
+          <EntitySet Name="reports" EntityType="Self.report" />
+          <EntitySet Name="users" EntityType="Self.user" />
+          <AssociationSet Name="FK_ads_area" Association="Self.FK_ads_area">
+            <End Role="area" EntitySet="areas" />
+            <End Role="ads" EntitySet="ads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ads_city" Association="Self.FK_ads_city">
+            <End Role="city" EntitySet="cities" />
+            <End Role="ads" EntitySet="ads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ads_user" Association="Self.FK_ads_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="ads" EntitySet="ads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_city_area" Association="Self.FK_city_area">
+            <End Role="area" EntitySet="areas" />
+            <End Role="city" EntitySet="cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Iuser_user" Association="Self.FK_Iuser_user">
+            <End Role="user" EntitySet="users" />
+            <End Role="Iuser" EntitySet="Iusers" />
+          </AssociationSet>
+          <EntitySet Name="views" EntityType="BSEntities7.view" />
+          <AssociationSet Name="FK_view_ads" Association="BSEntities7.FK_view_ads">
+            <End Role="ad" EntitySet="ads" />
+            <End Role="view" EntitySet="views" />
+          </AssociationSet>
+          <AssociationSet Name="FK_report_ad" Association="BSEntities7.FK_report_ad">
+            <End Role="ad" EntitySet="ads" />
+            <End Role="report" EntitySet="reports" />
+          </AssociationSet>
+          <EntitySet Name="Photos" EntityType="BSEntities7.Photo" />
+        </EntityContainer>
+        <EntityType Name="view">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ad" Relationship="BSEntities7.FK_view_ads" FromRole="view" ToRole="ad" />
+          <Property Name="VId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_view_ads">
+          <End Type="BSEntities7.ad" Role="ad" Multiplicity="1" />
+          <End Type="BSEntities7.view" Role="view" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ad">
+              <PropertyRef Name="ad_id" />
+            </Principal>
+            <Dependent Role="view">
+              <PropertyRef Name="ad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_report_ad">
+          <End Type="BSEntities7.ad" Role="ad" Multiplicity="0..1" />
+          <End Type="BSEntities7.report" Role="report" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ad">
+              <PropertyRef Name="ad_id" />
+            </Principal>
+            <Dependent Role="report">
+              <PropertyRef Name="adId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="path" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BSEntities7StoreContainer" CdmEntityContainer="BSEntities8">
+          <EntitySetMapping Name="ads">
+            <EntityTypeMapping TypeName="BSEntities7.ad">
+              <MappingFragment StoreEntitySet="ads">
+                <ScalarProperty Name="view" ColumnName="view" />
+                <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="area_id" ColumnName="area_id" />
+                <ScalarProperty Name="catagory" ColumnName="catagory" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="cityId" ColumnName="cityId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="url1" ColumnName="url1" />
+                <ScalarProperty Name="url2" ColumnName="url2" />
+                <ScalarProperty Name="url3" ColumnName="url3" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="areas">
+            <EntityTypeMapping TypeName="BSEntities7.area">
+              <MappingFragment StoreEntitySet="area">
+                <ScalarProperty Name="area_id" ColumnName="area_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cities">
+            <EntityTypeMapping TypeName="BSEntities7.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="cityId" ColumnName="cityId" />
+                <ScalarProperty Name="cityName" ColumnName="cityName" />
+                <ScalarProperty Name="area_id" ColumnName="area_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Iusers">
+            <EntityTypeMapping TypeName="BSEntities7.Iuser">
+              <MappingFragment StoreEntitySet="Iuser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Scat" ColumnName="Scat" />
+                <ScalarProperty Name="Sitem" ColumnName="Sitem" />
+                <ScalarProperty Name="Sphone" ColumnName="Sphone" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="area" ColumnName="area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="reports">
+            <EntityTypeMapping TypeName="BSEntities7.report">
+              <MappingFragment StoreEntitySet="report">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="adId" ColumnName="adId" />
+                <ScalarProperty Name="complain" ColumnName="complain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="BSEntities7.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+                <ScalarProperty Name="cpass" ColumnName="cpass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="views">
+            <EntityTypeMapping TypeName="BSEntities7.view">
+              <MappingFragment StoreEntitySet="view">
+                <ScalarProperty Name="VId" ColumnName="VId" />
+                <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="BSEntities7.Photo">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

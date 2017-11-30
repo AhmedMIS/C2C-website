@@ -1,0 +1,140 @@
+﻿@model sql4.Models.ad
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ad</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ad_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ad_id)
+            @Html.ValidationMessageFor(model => model.ad_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.user_id, "user")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("user_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.user_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.area_id, "area")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("area_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.area_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.catagory)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.catagory)
+            @Html.ValidationMessageFor(model => model.catagory)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.title)
+            @Html.ValidationMessageFor(model => model.title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.description)
+            @Html.ValidationMessageFor(model => model.description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.city)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.city)
+            @Html.ValidationMessageFor(model => model.city)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.date)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.date)
+            @Html.ValidationMessageFor(model => model.date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.name)
+            @Html.ValidationMessageFor(model => model.name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.e_mail)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.e_mail)
+            @Html.ValidationMessageFor(model => model.e_mail)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phone)
+            @Html.ValidationMessageFor(model => model.phone)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.url1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.url1)
+            @Html.ValidationMessageFor(model => model.url1)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.url3)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.url3)
+            @Html.ValidationMessageFor(model => model.url3)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.price)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.price)
+            @Html.ValidationMessageFor(model => model.price)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

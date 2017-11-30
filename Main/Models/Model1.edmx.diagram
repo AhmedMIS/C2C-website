@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3a109b49781f4502946660eb01cebf36" Name="Diagram1">
+        <EntityTypeShape EntityType="BSEntities7.ad" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BSEntities7.area" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BSEntities7.city" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BSEntities7.Iuser" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BSEntities7.report" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BSEntities7.user" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="BSEntities7.FK_ads_area" ManuallyRouted="false" />
+        <AssociationConnector Association="BSEntities7.FK_ads_city" ManuallyRouted="false" />
+        <AssociationConnector Association="BSEntities7.FK_ads_user" ManuallyRouted="false" />
+        <AssociationConnector Association="BSEntities7.FK_city_area" ManuallyRouted="false" />
+        <AssociationConnector Association="BSEntities7.FK_Iuser_user" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BSEntities7.view" Width="1.5" PointX="7.5" PointY="7.125" />
+        <AssociationConnector Association="BSEntities7.FK_view_ads" />
+        <AssociationConnector Association="BSEntities7.FK_report_ad" />
+        <EntityTypeShape EntityType="BSEntities7.Photo" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,55 @@
+﻿@model sql4.Models.Iuser
+
+@{
+    ViewBag.Title = "Details";
+}
+@{
+    Layout = "~/Views/Shared/after login.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Iuser</legend>
+
+    <div class="display-label">
+        <h1> @Html.DisplayNameFor(model => model.Scat)</h1>  
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Scat)
+    </div>
+
+    <div class="display-label">
+        <h1> @Html.DisplayNameFor(model => model.Sitem)</h1>  
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sitem)
+    </div>
+
+    <div class="display-label">
+        <h1>  @Html.DisplayNameFor(model => model.Sphone)</h1>  
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sphone)
+    </div>
+
+    <div class="display-label">
+        <h1>  @Html.DisplayNameFor(model => model.area)</h1>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.area)
+    </div>
+
+
+
+    <div class="display-label">
+        <h1>   @Html.DisplayNameFor(model => model.user.name)</h1>  
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.user.name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

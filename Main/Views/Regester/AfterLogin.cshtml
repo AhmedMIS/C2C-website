@@ -1,0 +1,62 @@
+﻿
+@model IEnumerable<sql4.Models.ad>
+
+@{
+    ViewBag.Title = "AfterLogin";
+}
+@{
+    Layout = "~/Views/Shared/after login.cshtml";
+}
+
+
+
+
+@if (Session["LogedUserFullname"] != null)
+{
+    <text>
+        Welcome
+    </text>
+    <h3>@Session["LogedUserFullname"].ToString()
+</h3>
+    <div id="a" style="padding-top:30px">
+     <a href="Create?id=@Session["LogedUserID"]" class="greybtn">Create New Ad</a>
+ <a rel="nofollow" id="header_create_account" href="/search/Create?id=@Session["LogedUserID"]" class="greybtn">New Search</a>
+   <a rel="nofollow" id="header_create_account" href="/search/Index?id=@Session["LogedUserID"]" class="greybtn">Edit You Search</a>
+               </div>              
+    <div class="columns">
+        <div class="widecolumn">
+
+            <section class="list_container">
+
+                <div class="list_box">
+
+
+                    <div id="list_item_thumbs">
+
+
+
+                        <div>
+                            @foreach (var item in Model)
+                                    {
+
+                                @Html.Partial("AfterLogin_Partial", item)
+                                    }
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                </section>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+                }

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<sql4.Models.Iuser>
+
+@{
+    ViewBag.Title = "Here You MAy edit you Search";
+}
+@{
+    Layout = "~/Views/Shared/after login.cshtml";
+}
+
+<h2>Index</h2>
+
+<table>
+    <tr >
+        <th style="padding-left:20px">
+            <h1>   @Html.DisplayNameFor(model => model.Scat)</h1>
+        </th>
+        <th style="padding-left:20px">
+            <h1> @Html.DisplayNameFor(model => model.Sitem)</h1>
+        </th>
+        <th style="padding-left:20px">
+            <h1> @Html.DisplayNameFor(model => model.Sphone)</h1>
+        </th>
+        <th style="padding-left:20px">
+            <h1>@Html.DisplayNameFor(model => model.user.name)</h1>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Scat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sitem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sphone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+</table>
+<div>  <a href="/Regester/AfterLogin">Go back TO Your ACCOUNT</a></div>

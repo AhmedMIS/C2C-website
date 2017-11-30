@@ -1,0 +1,317 @@
+﻿@model sql4.Models.ad
+
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@{
+    Layout = "~/Views/Shared/after login.cshtml";
+}
+@Styles.Render("~/Content/comPk.css")
+@Styles.Render("~/Content/link.css")
+@Styles.Render("~/Content/Pk.css")
+@Styles.Render("~/Content/vi.css")
+
+@Scripts.Render("~/engine1/jquery.js")
+@Styles.Render("~/engine1/style.css")
+
+
+
+<h2>Details</h2>
+
+
+
+<div class="app vevent hproduct vi">
+
+
+    <!-- Subject -->
+
+    <div class="subject_wrap">
+        <h1 dir="ltr" class="fn "> @Model.title </h1>
+
+    </div>
+    <section class="widecolumn">
+        <div class="item_metadata">
+
+            <span class="item_publisher">
+                <!-- Author -->
+                Advertised by
+
+                <a href="" rel="nofollow" class="js-item_contact_action">
+                    @Model.name
+                </a>
+
+                <abbr class="date dtstart value" title="2014-09-16T18:25:03+0000">
+                    @Model.date
+
+                </abbr>
+                <!-- User options -->
+
+            </span>
+
+
+
+        </div>
+
+        <div class="item_view_wrapper">
+
+
+
+
+
+
+
+
+
+
+            <!-- Main Images -->
+            <div class="item_image">
+
+                <div id="wowslider-container1">
+                    <div class="ws_images">
+                        <ul>
+                            <li><img src="/Images/@Model.url1" alt="@Model.catagory" title="@Model.title" id="wows1_0" /></li>
+                        </ul>
+                        <ul>
+                            <li><img src="/Images/@Model.url3" alt="@Model.catagory" title="@Model.title" id="wows1_0" /></li>
+                        </ul>
+                    </div>
+                    <div class="ws_bullets">
+                        <div>
+                            <a href="#" title="picture270"><img src="data1/tooltips/picture270.jpg" alt="picture270" />1</a>
+                        </div>
+                    </div><span class="wsl"><a href="">html slideshow</a> by WOWSlider.com v6.4</span>
+                    <div class="ws_shadow"></div>
+                </div>
+            </div>
+
+
+            @Scripts.Render("~/engine1/wowslider.js")
+            @Scripts.Render("~/engine1/script.js")
+
+
+            <div class="item_params">
+                <!-- Ad params -->
+                <ul class="unstyled column3li">
+                    <!-- Price -->
+
+                    <li>
+                        Price:
+
+
+
+
+
+
+                        <h2 class="price money">
+
+                            <span class="amount value" title="17000">@Model.price.ToString("#,##0")</span> <abbr class="currency" title="RS">Rs</abbr>
+
+
+                        </h2>
+
+
+
+                    </li>
+
+
+
+
+
+
+                    <li>
+                        City: <h2>
+                                  @Model.city.cityName
+
+                        </h2>
+                    </li>
+                    <li>
+                        Area: <h2>
+                            @Model.area.name
+
+                        </h2>
+                    </li>
+                    </li>
+
+
+
+                    <li class="span2">
+                        Type: <h2>@Model.catagory for Sale</h2>
+                    </li>
+
+
+
+                </ul>
+            </div>
+
+
+
+
+
+            <div class="item_content" dir="ltr">
+                <!-- Body -->
+
+                <h5>@Model.description</h5>
+
+
+                <div class="item_contact" dir="ltr">
+
+
+
+
+                    <!-- Mail author -->
+                    <!-- Phone author -->
+
+                    <div class="menu_phone menu_contact">
+                        <i class="sprite_phone"></i>
+                        <div class="phone_block" id="vi_phone_block">
+                            <div class="AdName"><h4>@Model.name:</h4></div>
+
+
+
+                            <div class="AdShowPhone">
+                                <h5>@Model.phone</h5>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <a href="/Regester/Afterlogin">BACK TO LIST</a>
+
+                </div>
+              
+
+        </div>
+
+    </section>
+    <aside class="sidebar">
+
+
+
+        <div class="hidden">
+            @Session["uid"]=@Model.ad_id;
+            @Session["umail"]=@Model.e_mail;
+        </div>
+        <div class="side_box">
+            <h3>Send a Message</h3>
+            @using (Html.BeginForm("send", "ad", FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+                    <ul class="bullets">
+                        <li> Name:@Html.TextBox("name", "")</li>
+                        @Html.ValidationMessage("Name is required")
+
+                        Email:@Html.TextBox("Email")
+                        @Html.ValidationMessage("Email is required")
+                        Message:@Html.TextArea("Mess", new { @class = "body", @cols = 20, @rows = 5 })
+
+                        <asp:requiredfieldvalidator controltovalidate="name"
+                                                    text="The name field is required!"
+                                                    runat="server" />
+
+
+
+
+                    </ul>
+
+                    <input type="submit" value="Create" />
+
+
+                </fieldset>
+            }
+        </div>
+        <div class="side_box">
+            <h3>New Search</h3>
+            <ul class="bullets">
+                <li class="list">You can search your Add</li>
+                <li class="list">Will modify you search</li>
+                <li class="list">Delete Your Search</li>
+                <li class="list">Get Runtime Respose of your Search</li>
+            </ul>
+        </div>
+
+
+
+
+
+    </aside>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,333 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model IPagedList<sql4.Models.ad>
+@{
+    Layout = "~/Views/Shared/Admin_.cshtml";
+}
+
+
+@Styles.Render("~/Content/comPk.css")
+@Styles.Render("~/Content/link.css")
+@Styles.Render("~/Content/Pk.css")
+
+@Styles.Render("~/Content/PagedList.css")
+
+@Styles.Render("~/Content/list.css")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="searchbox">
+
+
+
+
+    @using (Html.BeginForm("Admin", "Regester", FormMethod.Get))
+    {
+
+
+
+
+        <h4>Search Your Add</h4>
+
+
+
+
+        <div class="search_filter row">
+            @Html.TextBox("searchString")
+
+
+
+
+
+            <div class="selectbox">
+
+                @Html.DropDownGroupList("catagory", new List<GroupedSelectListItem>(){
+
+
+          new GroupedSelectListItem() { Value="Cell Phones", Text="Cell Phones", GroupName="Electronics" },
+          new GroupedSelectListItem() { Value="Refrigrator", Text="Refrigrator",GroupName="Electronics" } ,
+           new GroupedSelectListItem() { Value="Home Appliences", Text="Home Aplliences",GroupName="Electronics" } ,
+          new GroupedSelectListItem() { Value="Sofa", Text="Sofa", GroupName="Furniture",GroupKey="2" },
+          new GroupedSelectListItem() { Value="Bed", Text="Bed", GroupName="Furniture",GroupKey="2" },
+            new GroupedSelectListItem() { Value="Car", Text="Car", GroupName="AutoMobiles",GroupKey="3" },
+              new GroupedSelectListItem() { Value="Bike", Text="Bike", GroupName="AutoMobiles",GroupKey="3" },
+
+
+
+
+       }, "-- Select Catagory --", new { @class = "category_group" })
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div class="searchbox_where">
+
+                <div class="selectbox">
+
+                    @Html.DropDownGroupList("Area", new List<GroupedSelectListItem>(){
+
+
+          new GroupedSelectListItem() { Value="Lahore", Text="Lahore", GroupName="Punjab" },
+          new GroupedSelectListItem() { Value="Islamabad", Text="Islamabad",GroupName="Punjab" } ,
+           new GroupedSelectListItem() { Value="Gujrat", Text="Gujrat",GroupName="Punjab" } ,
+          new GroupedSelectListItem() { Value="Peshawar", Text="Peshawar", GroupName="KPK",GroupKey="2" },
+          new GroupedSelectListItem() { Value="Kohat", Text="Kohat", GroupName="KPK",GroupKey="2" },
+            new GroupedSelectListItem() { Value="Karachi", Text="Karachi", GroupName="Sind",GroupKey="3" },
+              new GroupedSelectListItem() { Value="Wehari", Text="Wehari", GroupName="Sind",GroupKey="3" },
+
+
+
+
+       }, "-- Select Area --", new { @class = "category_group" })
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+        <input value="Search" class="button" type="submit">
+
+
+
+
+
+
+    }
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="page_name">
+  
+
+    <h2> WELCOME Admin</h2>
+    
+</div>
+
+
+
+<div class="columns">
+    <div class="widecolumn">
+
+
+
+
+        <nav class="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+            <span class="breadcrumb-first nohistory">
+                <a href="" itemprop="url">
+                    <i class="fonticon-home fonticon-size-large fonticon-vertical-fix fonticon-color-gray1"></i>
+                </a>
+            </span>
+
+            <span itemprop="child" itemscope="">
+                <i class="sprite_breadcrumbs_arrow"></i>
+                <a href="" itemprop="url">
+                    PAKSELL
+                </a>
+            </span>
+        </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        <section class="list_container">
+
+            <nav class="nohistory">
+
+
+                <a href="/ad"
+                    <span accesskey="a" class="first active list_tab">
+                        <strong>All Adversitments&nbsp;-&nbsp;</strong> Click to check detail
+                    </span>
+                </a>
+
+
+
+            </nav>
+        </section>
+
+        <div class="list_box">
+            <div class="list_options">
+                <div class="sorting" style="padding:3px">
+
+                    <span class="sort" style="padding-left:200px">
+                       
+                            Action
+                        
+                    </span>
+
+                    <a id="sort_price" href="/ad?sort=2" title="Show cheapest first">
+                             </a>
+
+
+                </div>
+            </div>
+
+            <div id="list_item_thumbs">
+
+
+
+
+
+
+
+
+
+
+
+                <div>
+                    @foreach (var item in Model)
+                    {
+
+                        @Html.Partial("adminView", item)
+                    }
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="pagination">
+
+
+
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.PageNumbersOnly)
+
+
+
+        </div>
+
+
+    </div>
+    <aside class="sidebar">
+
+
+        <div class="side_box" style="height: 150px">
+            <h3>Admin Panel</h3>
+            <div class="side-content" id="side-content" style="display: block; position: absolute">
+                <div style="float:left;">
+                    <a id="sprite_about" class="sprite_about spritetext">
+                
+                    </a>
+                </div>
+                <div style="float:left">
+
+                    <ul class="bullets">
+                        <li class="list">
+
+
+                            <a href="/Regester/user" title="Asani">
+                                Register Users
+                            </a>
+                            </li>
+
+                        <li class="list">
+
+
+                            <a href="/Regester/Photo" title="Asani">
+                                Upload Photo
+                            </a>
+                            </li>
+
+
+                        <li class="list">
+
+
+                            <a href="/Regester/admin">
+                                Admin Panel
+                            </a>
+
+                           
+                        </li>
+                        <li class="list">
+                            <a href="/Regester/report">
+                                View Reports
+                            </a>
+                        </li>
+
+</ul>
+
+
+
+
+
+
+                </div>
+                    <div id="likebtn" style="float:none; margin-left: 0px">
+
+                        <iframe src="./For sale in Lahore   Asani.com.pk_files/like.htm" scrolling="no" frameborder="0" width="100px" height="20px"></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </aside>
+</div>
+

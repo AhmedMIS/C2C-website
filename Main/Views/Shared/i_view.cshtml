@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/comPk.css")
+    @Styles.Render("~/Content/link.css")
+    @Styles.Render("~/Content/Pk.css")
+    @Scripts.Render("~/Scripts/bootstrap.js")
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+
+
+</head>
+<body>
+
+    <div class="container">
+        <header style="background-color: #4c66a4;">
+
+
+            <div class=" header_inner center_element">
+                <a href="http://localhost:8189/">
+                    <img id="logo" src="/Images/logo1.png" height="65px" width="250px" style="margin-bottom:5px;">
+                </a>
+
+
+
+                <nav class="mainnav nohistory">
+                    <ul>
+                        <!--  + '' + '6' + '1' -->
+
+
+
+                        <li id="header_ai" class="li active"><a rel="nofollow" href="/ad/Create">Insert Ad</a></li>
+
+                        <li id="header_li"><a href="/ad" style="color:white;">Search for Ads</a></li>
+
+                        <li id="header_li"  ><a href="/ad/rules" style="color:white;">Customer Service</a></li>
+
+                        <li class="vline"></li>
+                        <li class="no_padding"><a rel="nofollow" id="header_login" href="/Regester/login" style="color:white;">Log in</a></li>
+                        <li class="last no_padding"><a rel="nofollow" id="header_create_account" href="/Regester/Register" class="greybtn">Create account</a></li>
+
+
+
+                    </ul>
+
+
+                </nav>
+            </div>
+        </header>
+    </div>
+    <div id="wrapper">
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+</body>
+
+</html>
+
+<footer class="nohistory" style="height:90px;">
+    <div class="footer_inner center_element">
+        <nav class="footer_nav">
+            <ul>
+                <li><a class="first" href=""> Customer Service </a></li>
+                <li><a href=""> Shop safely </a></li>
+                <li><a href=""> Rules </a></li>
+                <li><a href=""> About PaKSell.com.pk </a></li>
+
+
+
+
+                <li class="footer_social"><a href="/www.facebook.com/rjahmedmustafa" class="facebook_footer" target="_blank"><i class="sprite_facebook"></i> Facebook </a> </li>
+
+                <li class="footer_social"><a href="" class="twitter_footer" target="_blank"><i class="sprite_twitter"></i> Twitter </a> </li>
+
+                <li class="footer_social"><a href="/www.google.com" class="googleplus_footer" target="_blank"><i class="sprite_googleplus"></i> Google </a> </li>
+
+
+            </ul>
+        </nav>
+
+    </div><!-- .footer_inner -->
+</footer>

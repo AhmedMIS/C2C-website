@@ -1,0 +1,119 @@
+﻿@model sql4.Models.Photo
+
+@{
+    ViewBag.Title = "photo";
+    Layout = "~/Views/Shared/Admin_.cshtml";
+}
+
+<h2>photo</h2>
+
+<div class="columns app">
+    <section class="widecolumn">
+
+        <div id="err_cleared_by" class="error_label" style="display: none">
+            <span class="msg_warning nohistory"></span>
+        </div>
+        <div class="form">
+
+
+            @using (Html.BeginForm("photo", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.path)
+                    </div>
+
+                    <div class="row input">
+
+
+                        <div class="col_right">
+
+
+                            @Html.TextBoxFor(model => model.photo, new { type = "file" })
+
+                            <div class="col_right" style="color:red">
+                                @Html.ValidationMessageFor(model => model.photo)
+                            </div>
+
+
+                            <div class="editor-label">
+                                @Html.LabelFor(model => model.name)
+                            </div>
+                            <div class="editor-field">
+                                @Html.EditorFor(model => model.name)
+                                @Html.ValidationMessageFor(model => model.name)
+                            </div>
+
+                            <p>
+                                <input type="submit" value="Create" />
+                            </p>
+                </fieldset>
+            }
+        </div>
+    </section>
+    <aside class="sidebar">
+
+
+        <div class="side_box" style="height: 150px">
+            <h3>Admin Panel</h3>
+            <div class="side-content" id="side-content" style="display: block; position: absolute">
+                <div style="float:left;">
+                    <a id="sprite_about" class="sprite_about spritetext">
+
+                    </a>
+                </div>
+                <div style="float:left">
+
+                    <ul class="bullets">
+                        <li class="list">
+
+
+                            <a href="/Regester/user" title="Asani">
+                                Register Users
+                            </a>
+                        </li>
+
+                        <li class="list">
+
+
+                            <a href="/Regester/Photo" title="Asani">
+                                Upload Photo
+                            </a>
+                        </li>
+
+
+                        <li class="list">
+
+
+                            <a href="/Regester/admin">
+                                Admin Panel
+                            </a>
+
+
+                        </li>
+                        <li class="list">
+                            <a href="/Regester/report">
+                                View Reports
+                            </a>
+                        </li>
+
+                    </ul>
+
+
+
+
+
+
+                </div>
+
+
+                <div>
+
+                </div>
+

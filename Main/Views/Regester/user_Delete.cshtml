@@ -1,0 +1,84 @@
+﻿@model sql4.Models.user
+
+@{
+    ViewBag.Title = "Delete";
+}
+@{
+    Layout = "~/Views/Shared/Admin_.cshtml";
+}
+<h2>Delete</h2>
+
+@Styles.Render("~/Content/ai.css")
+@Styles.Render("~/Content/pk.css")
+@Styles.Render("~/Content/compk.css")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div class="columns app">
+    <section class="widecolumn">
+
+        <div id="err_cleared_by" class="error_label" style="display: none">
+            <span class="msg_warning nohistory"></span>
+        </div>
+        <div class="form">
+
+            <fieldset>
+
+
+
+
+
+
+
+
+
+
+
+                <div class="display-label">
+                    <h3>User ID</h3>
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.user_id)
+                </div>
+
+                <div class="display-label">
+                    <h3>Name Of The User</h3>
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.name)
+                </div>
+
+                <div class="display-label">
+                    <h3>Email</h3>
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.e_mail)
+                </div>
+
+                <div class="display-label">
+                    <h3>Password</h3>
+                </div>
+                <div class="display-field">
+                    @Html.DisplayFor(model => model.password)
+                </div>
+
+        </div>
+        </fieldset>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                <input type="submit" value="Delete" /> 
+                @Html.ActionLink("Back to List", "/user")
+            </p>
+        }
+
+
+</div>
+                </section>
+
+</div>

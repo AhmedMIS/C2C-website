@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BSEntities7" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="ad">
+    <Key>
+      <PropertyRef Name="ad_id" />
+    </Key>
+    <Property Name="ad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="area_id" Type="Int32" Nullable="false" />
+    <Property Name="catagory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cityId" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="e_mail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="url1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="url2" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="url3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="area" Relationship="Self.FK_ads_area" FromRole="ads" ToRole="area" />
+    <NavigationProperty Name="city" Relationship="Self.FK_ads_city" FromRole="ads" ToRole="city" />
+    <NavigationProperty Name="user" Relationship="Self.FK_ads_user" FromRole="ads" ToRole="user" />
+    <Property Name="view" Type="Int32" />
+    <NavigationProperty Name="view1" Relationship="BSEntities7.FK_view_ads" FromRole="ad" ToRole="view" />
+    <NavigationProperty Name="reports" Relationship="BSEntities7.FK_report_ad" FromRole="ad" ToRole="report" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="area_id" />
+    </Key>
+    <Property Name="area_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ads" Relationship="Self.FK_ads_area" FromRole="area" ToRole="ads" />
+    <NavigationProperty Name="cities" Relationship="Self.FK_city_area" FromRole="area" ToRole="city" />
+  </EntityType>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="cityId" />
+    </Key>
+    <Property Name="cityId" Type="Int32" Nullable="false" />
+    <Property Name="cityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="area_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ads" Relationship="Self.FK_ads_city" FromRole="city" ToRole="ads" />
+    <NavigationProperty Name="area" Relationship="Self.FK_city_area" FromRole="city" ToRole="area" />
+  </EntityType>
+  <EntityType Name="Iuser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Scat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sitem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sphone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="user" Relationship="Self.FK_Iuser_user" FromRole="Iuser" ToRole="user" />
+  </EntityType>
+  <EntityType Name="report">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="adId" Type="Int32" />
+    <Property Name="complain" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ad" Relationship="BSEntities7.FK_report_ad" FromRole="report" ToRole="ad" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="e_mail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="enable" Type="Boolean" />
+    <Property Name="cpass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ads" Relationship="Self.FK_ads_user" FromRole="user" ToRole="ads" />
+    <NavigationProperty Name="Iusers" Relationship="Self.FK_Iuser_user" FromRole="user" ToRole="Iuser" />
+  </EntityType>
+  <Association Name="FK_ads_area">
+    <End Role="area" Type="Self.area" Multiplicity="1" />
+    <End Role="ads" Type="Self.ad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="area_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="area_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ads_city">
+    <End Role="city" Type="Self.city" Multiplicity="1" />
+    <End Role="ads" Type="Self.ad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="city">
+        <PropertyRef Name="cityId" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="cityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ads_user">
+    <End Role="user" Type="Self.user" Multiplicity="0..1" />
+    <End Role="ads" Type="Self.ad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="ads">
+        <PropertyRef Name="user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_city_area">
+    <End Role="area" Type="Self.area" Multiplicity="1" />
+    <End Role="city" Type="Self.city" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="area_id" />
+      </Principal>
+      <Dependent Role="city">
+        <PropertyRef Name="area_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Iuser_user">
+    <End Role="user" Type="Self.user" Multiplicity="1" />
+    <End Role="Iuser" Type="Self.Iuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="user">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Iuser">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BSEntities8" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ads" EntityType="Self.ad" />
+    <EntitySet Name="areas" EntityType="Self.area" />
+    <EntitySet Name="cities" EntityType="Self.city" />
+    <EntitySet Name="Iusers" EntityType="Self.Iuser" />
+    <EntitySet Name="reports" EntityType="Self.report" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <AssociationSet Name="FK_ads_area" Association="Self.FK_ads_area">
+      <End Role="area" EntitySet="areas" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ads_city" Association="Self.FK_ads_city">
+      <End Role="city" EntitySet="cities" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ads_user" Association="Self.FK_ads_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="ads" EntitySet="ads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_city_area" Association="Self.FK_city_area">
+      <End Role="area" EntitySet="areas" />
+      <End Role="city" EntitySet="cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Iuser_user" Association="Self.FK_Iuser_user">
+      <End Role="user" EntitySet="users" />
+      <End Role="Iuser" EntitySet="Iusers" />
+    </AssociationSet>
+    <EntitySet Name="views" EntityType="BSEntities7.view" />
+    <AssociationSet Name="FK_view_ads" Association="BSEntities7.FK_view_ads">
+      <End Role="ad" EntitySet="ads" />
+      <End Role="view" EntitySet="views" />
+    </AssociationSet>
+    <AssociationSet Name="FK_report_ad" Association="BSEntities7.FK_report_ad">
+      <End Role="ad" EntitySet="ads" />
+      <End Role="report" EntitySet="reports" />
+    </AssociationSet>
+    <EntitySet Name="Photos" EntityType="BSEntities7.Photo" />
+  </EntityContainer>
+  <EntityType Name="view">
+    <Key>
+      <PropertyRef Name="ad_id" />
+    </Key>
+    <Property Name="ad_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ad" Relationship="BSEntities7.FK_view_ads" FromRole="view" ToRole="ad" />
+    <Property Name="VId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_view_ads">
+    <End Type="BSEntities7.ad" Role="ad" Multiplicity="1" />
+    <End Type="BSEntities7.view" Role="view" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ad">
+        <PropertyRef Name="ad_id" />
+      </Principal>
+      <Dependent Role="view">
+        <PropertyRef Name="ad_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_report_ad">
+    <End Type="BSEntities7.ad" Role="ad" Multiplicity="0..1" />
+    <End Type="BSEntities7.report" Role="report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ad">
+        <PropertyRef Name="ad_id" />
+      </Principal>
+      <Dependent Role="report">
+        <PropertyRef Name="adId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Photo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="path" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,216 @@
+﻿@model sql4.Models.send
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+
+@{
+    Layout = "~/Views/Shared/_Layoutp.cshtml";
+}
+
+
+
+@Styles.Render("~/Content/ai.css")
+@Styles.Render("~/Content/pk.css")
+@Styles.Render("~/Content/compk.css")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+
+
+
+
+<div class="columns app">
+    <section class="widecolumn">
+
+        <div id="err_cleared_by" class="error_label" style="display: none">
+            <span class="msg_warning nohistory"></span>
+        </div>
+        <div class="form" style="padding-left:30px">
+
+
+
+
+
+
+
+
+
+
+            @using (Html.BeginForm("send", null, FormMethod.Post
+                            ))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+
+
+
+
+
+
+
+
+
+                <fieldset>
+
+                    <!-- heading: NEWAD_HEADING_AD_DETAILS -->
+                    <h2 class="newadheading">
+                        Details about your Email
+                    </h2>
+
+
+
+                    <!-------------------------------------Ctagaory-->
+
+
+                    <!---------------------Name----------------->
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.Label("Subject")
+                        </div>
+                        <div class="col_right">
+                            @Html.EditorFor(model => model.title)
+                            @Html.ValidationMessageFor(model => model.title)
+                        </div>
+                    </div>
+
+
+
+
+                    <!-----------------------description----------------->
+
+                    <!-----------------------description----------------->
+
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.description)
+                        </div>
+                        <div class="col_right">
+                            @Html.TextAreaFor(model => model.description, new { @class = "body", @cols = 45, @rows = 10 })
+                            @Html.ValidationMessageFor(model => model.description)
+                        </div>
+                    </div>
+
+
+                    <!---------price------>
+
+                    <!-------------Area---------------->
+                
+
+
+
+                        <!-----------------City-->
+
+
+                
+                    <!------------------Images--------->
+
+
+
+
+                    <!-------------------------Name-->
+
+
+                    <div class="row input">
+                        <div class="col_left">
+
+                            @Html.LabelFor(model => model.name)
+                        </div>
+
+                        <div class="col_right">
+
+                            @Html.EditorFor(model => model.name)
+                            @Html.ValidationMessageFor(model => model.name)
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.e_mail)
+                        </div>
+
+                        <div class="col_right">
+                            @Html.EditorFor(model => model.e_mail)
+                            @Html.ValidationMessageFor(model => model.e_mail)
+                        </div>
+                    </div>
+
+
+
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.phone)
+                        </div>
+
+                        <div class="col_right">
+                            @Html.EditorFor(model => model.phone)
+                            @Html.ValidationMessageFor(model => model.phone)
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="row input">
+                        <div class="col_left">
+
+
+
+                        </div>
+                        <div class="col_right">
+
+                            <input type="submit" value="Send" />
+                        </div>
+                    </div>
+                </fieldset>
+            }
+
+        </div>
+    </section>
+
+
+    <aside class="sidebar">
+
+
+
+
+
+
+        <div class="side_box">
+            <h3>How to sell quickly?</h3>
+            <ul class="bullets">
+                <li class="list">Keep a brief title and full description of the item</li>
+                <li class="list">Add photos to your ad</li>
+                <li class="list">Put a reasonable price</li>
+            </ul>
+        </div>
+        <div class="side_box">
+            <h3>Quick rules</h3>
+            <ul class="bullets">
+                <li class="list">Do not post the same ad repeatedly</li>
+                <li class="list">Do not include link to the site in the text and photo ads</li>
+                <li class="list">Do not sell <>prohibited goods</li>
+                <li class="list">All the rules Should be followed</li>
+            </ul>
+        </div>
+
+
+
+
+
+    </aside>
+
+</div>
+

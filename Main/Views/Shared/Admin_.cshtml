@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/comPk.css")
+    @Styles.Render("~/Content/link.css")
+    @Styles.Render("~/Content/Pk.css")
+
+
+
+</head>
+<body>
+
+    <div class="container">
+        <header style="background-color: #4c66a4;">
+
+
+            <div class=" header_inner center_element">
+                <img id="logo" src="/Images/logo1.png" height="65px" width="250px" style="margin-bottom:5px;">
+
+
+
+
+                <nav class="mainnav nohistory">
+                    <ul>
+                        <!--  + '' + '6' + '1' -->
+
+                        <li id="header_customer_service" class="customer_service"><a href="/Regester/admin" style="color:white;">Admin Panel</a></li>
+
+                        <li id="header_customer_service" class="customer_service"><a href="/Regester/user" style="color:white;">Register User</a></li>
+                        <li id="header_customer_service" class="customer_service"><a href="/Regester/photo" style="color:white;">Photo Upload</a></li>
+                        <li id="header_customer_service" class="customer_service"><a href="/Regester/report" style="color:white;">View Reports</a></li>
+                        <li class="vline"></li>
+
+                        <li class="last no_padding"><a rel="nofollow" id="header_create_account" href="/Regester/Logout" class="greybtn">LOG OUT</a></li>
+
+
+                    </ul>
+
+
+                </nav>
+            </div>
+        </header>
+    </div>
+    <div id="wrapper">
+        <div>
+            @RenderBody()
+        </div>
+    </div>
+</body>
+
+</html>
+
+<footer class="nohistory" style="height:90px;">
+    <div class="footer_inner center_element">
+        <nav class="footer_nav">
+            <ul>
+                <li><a class="first" href="/ad/rule"> Customer Service </a></li>
+                <li><a href="/ad/rule"> Shop safely </a></li>
+                <li><a href="/ad/rule"> Rules </a></li>
+                <li><a href="/ad/rule"> About PAKSELL.com.pk </a></li>
+
+
+
+
+                <li class="footer_social"><a href="" class="facebook_footer" target="_blank"><i class="sprite_facebook"></i> Facebook </a> </li>
+
+                <li class="footer_social"><a href="" class="twitter_footer" target="_blank"><i class="sprite_twitter"></i> Twitter </a> </li>
+
+                <li class="footer_social"><a href="" class="googleplus_footer" target="_blank"><i class="sprite_googleplus"></i> Google </a> </li>
+
+
+            </ul>
+        </nav>
+
+    </div><!-- .footer_inner -->
+</footer>

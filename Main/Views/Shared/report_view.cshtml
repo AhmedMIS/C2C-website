@@ -1,0 +1,86 @@
+﻿@model sql4.Models.report
+
+
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    @Styles.Render("~/Content/comPk.css")
+    @Styles.Render("~/Content/link.css")
+    @Styles.Render("~/Content/Pk.css")
+
+
+
+
+
+
+</head>
+
+<div id="list_item_thumbs">
+
+
+    <div class="item">
+        <abbr class="date dtstart value item_age" title=" ">
+            <br>
+        </abbr>
+        <a lang="" class="item_img" tabindex="1" href="">
+
+    
+
+        </a>
+        <div class="item_info">
+
+            <h3 class="ellipsis item_subject"><a href=""></a></h3>
+
+            <p class="item_teaser">
+           @Model.adId
+            </p>
+            @Model.complain
+            <div class="item_segments clean_links nohistory">
+                <small>
+
+
+              
+                    -
+                </small>
+
+
+
+
+
+            </div>
+        </div>
+
+        <div class="item_price">
+            <span class="price_span">
+
+
+
+
+
+
+
+
+
+
+                <span class="price_value" dir="ltr">
+                    <h4><a href="/Regester/Delete2?id=@Model.adId">View/Delete</a></h4>
+
+                </span>
+
+
+
+
+
+
+
+
+
+            </span>
+        </div>
+
+
+    </div>
+
+</div>

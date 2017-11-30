@@ -1,0 +1,153 @@
+﻿@model sql4.Models.u_login
+
+@{
+    ViewBag.Title = "Login Here";
+}
+@{
+    Layout = "~/Views/Shared/_Layoutp.cshtml";
+}
+
+
+<h2>Login</h2>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@Styles.Render("~/Content/ai.css")
+@Styles.Render("~/Content/pk.css")
+@Styles.Render("~/Content/compk.css")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+
+
+
+
+
+
+<div class="columns app">
+    <section class="widecolumn">
+
+        <div id="err_cleared_by" class="error_label" style="display: none">
+            <span class="msg_warning nohistory"></span>
+        </div>
+        <div class="form" style="padding-left:30px">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <fieldset>
+
+
+                    <h2 class="newadheading" style="padding:30px">
+                    Login in to Your Account Here
+                    </h2>
+
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.Email)
+                        </div>
+
+                        <div class="col_right">
+
+                            @Html.EditorFor(model => model.Email)
+                            @Html.ValidationMessageFor(model => model.Email)
+
+                        </div>
+                    </div>
+                    <div class="row input">
+                        <div class="col_left">
+                            @Html.LabelFor(model => model.Password)
+                        </div>
+                        <div class="col_right">
+
+                            @Html.EditorFor(model => model.Password)
+                            @Html.ValidationMessageFor(model => model.Password)
+
+                        </div>
+                    </div>
+
+                    <div class="row input">
+                        <div class="col_left">
+
+
+
+                        </div>
+                        <div class="col_right">
+
+                            <input type="submit" value="Login" />
+                        </div>
+                    </div>
+                </fieldset>
+            }
+
+
+
+ 
+
+
+</div>
+    </section>
+
+
+
+        <aside class="sidebar">
+
+
+
+
+
+
+            <div class="side_box">
+                <h3>After Login You Can Do!!!!</h3>
+                <ul class="bullets">
+                    <li class="list">View Your Add</li>
+                    <li class="list">Delete Your Add</li>
+                    <li class="list">Post new Add even faster</li>
+                </ul>
+            </div>
+            <div class="side_box">
+                <h3>New Search</h3>
+                <ul class="bullets">
+                    <li class="list">You can search your Add</li>
+                    <li class="list">Will modify you search</li>
+                    <li class="list">Delete Your Search</li>
+                    <li class="list">Get Runtime Respose of your Search</li>
+                </ul>
+            </div>
+
+
+
+
+
+        </aside>
+
+</div>
+
+
+
+
+
+
+
+
+
+

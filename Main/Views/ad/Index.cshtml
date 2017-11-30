@@ -1,0 +1,601 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<sql4.Models.ad>
+@{
+    Layout = "~/Views/Shared/_Layoutp.cshtml";
+}
+
+
+@Styles.Render("~/Content/comPk.css")
+@Styles.Render("~/Content/link.css")
+@Styles.Render("~/Content/Pk.css")
+
+@Styles.Render("~/Content/PagedList.css")
+
+@Styles.Render("~/Content/list.css")
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var i = setInterval("reloadpage()", 3000)
+
+    })
+
+
+    function reloadpage() {
+        location.reload();
+
+    }
+    // every 3 sec
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+<section id="searchbox">
+
+
+
+
+    @using (Html.BeginForm("Index", "ad", FormMethod.Get))
+    {
+
+
+
+
+        <h4>Search Your Add</h4>
+
+
+
+
+        <div class="search_filter row">
+            @Html.TextBox("searchString")
+
+
+
+
+
+            <div class="selectbox">
+
+                @Html.DropDownGroupList("catagory", new List<GroupedSelectListItem>(){
+
+
+          new GroupedSelectListItem() { Value="Cell Phones", Text="Cell Phones", GroupName="Electronics" },
+          new GroupedSelectListItem() { Value="Refrigrator", Text="Refrigrator",GroupName="Electronics" } ,
+           new GroupedSelectListItem() { Value="Home Appliences", Text="Home Aplliences",GroupName="Electronics" } ,
+          new GroupedSelectListItem() { Value="Sofa", Text="Sofa", GroupName="Furniture",GroupKey="2" },
+          new GroupedSelectListItem() { Value="Bed", Text="Bed", GroupName="Furniture",GroupKey="2" },
+            new GroupedSelectListItem() { Value="Car", Text="Car", GroupName="AutoMobiles",GroupKey="3" },
+              new GroupedSelectListItem() { Value="Bike", Text="Bike", GroupName="AutoMobiles",GroupKey="3" },
+                   new GroupedSelectListItem() { Value="Horse", Text="Horse", GroupName="Animal",GroupKey="4" },
+              new GroupedSelectListItem() { Value="Laptops", Text="Laptops", GroupName="Gadegts",GroupKey="5" },
+
+
+
+       }, "-- Select Catagory --", new { @class = "category_group" })
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div class="searchbox_where">
+
+                <div class="selectbox">
+
+                    @Html.DropDownGroupList("Area", new List<GroupedSelectListItem>(){
+
+
+          new GroupedSelectListItem() { Value="Lahore", Text="Lahore", GroupName="Punjab" },
+          new GroupedSelectListItem() { Value="Islamabad", Text="Islamabad",GroupName="Punjab" } ,
+           new GroupedSelectListItem() { Value="Gujrat", Text="Gujrat",GroupName="Punjab" } ,
+          new GroupedSelectListItem() { Value="Peshawar", Text="Peshawar", GroupName="KPK",GroupKey="2" },
+          new GroupedSelectListItem() { Value="Kohat", Text="Kohat", GroupName="KPK",GroupKey="2" },
+            new GroupedSelectListItem() { Value="Karachi", Text="Karachi", GroupName="Sind",GroupKey="3" },
+              new GroupedSelectListItem() { Value="Wehari", Text="Wehari", GroupName="Sind",GroupKey="3" },
+               new GroupedSelectListItem() { Value="Quotta", Text="Quotta", GroupName="Blochistan",GroupKey="4" },
+               new GroupedSelectListItem() { Value="Bimber", Text="Bimber", GroupName="Azad Kashmir",GroupKey="5" },
+
+
+
+
+       }, "-- Select Area --", new { @class = "category_group" })
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+        <input value="Search" class="button" type="submit">
+
+
+
+
+
+
+    }
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="page_name">
+    <h1>
+
+     WELCOME TO PAKSELL(BUY SELL IN NO TIME)
+
+
+    </h1>
+</div>
+
+
+
+    <div class="columns">
+        <div class="widecolumn">
+
+
+
+
+            <nav class="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <span class="breadcrumb-first nohistory">
+                    <a href="" itemprop="url">
+                        <i class="fonticon-home fonticon-size-large fonticon-vertical-fix fonticon-color-gray1"></i>
+                    </a>
+                </span>
+
+                <span itemprop="child" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <i class="sprite_breadcrumbs_arrow"></i>
+                    <a href="" itemprop="url">
+                        Entire country
+                    </a>
+                </span>
+            </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="linkshelf nohistory">
+                <ul>
+
+
+
+                    <li>
+
+
+                        <span class="nohistory">
+                            <a title="	Phones, computers &amp; Elect..." class="linkshelf-cat" href="/ad?searchString=&catagory=&Area=&pro=Punjab">
+                                <strong class="ellipsis">	Punjab</strong>
+                            </a>
+
+                        </span>
+                    </li>
+
+                    <li>
+
+
+                        <span class="nohistory">
+                            <a title="	Phones, computers &amp; Elect..." class="linkshelf-cat" href="/ad?searchString=&catagory=&Area=&pro=Sindh">
+                                <strong class="ellipsis">	Sindh</strong>
+
+                                </a>
+                        </span>
+                    </li>
+
+                    <li>
+
+
+                        <span class="nohistory">
+                            <a title="	Phones, computers &amp; Elect..." class="linkshelf-cat" href="/ad?searchString=&catagory=&Area=&pro=Azad">
+                                <strong class="ellipsis">	Azad Kashmir</strong>
+
+                                </a>
+                        </span>
+                    </li>
+
+                    <li>
+
+
+                        <span class="nohistory">
+                            <a title="	Phones, computers &amp; Elect..." class="linkshelf-cat" href="/ad?searchString=&catagory=&Area=&pro=Khyber">
+                                <strong class="ellipsis">	Khaiber Phaton Khawa</strong>
+
+                            </a>
+                        </span>
+                    </li>
+
+                    <li>
+
+
+                        <span class="nohistory">
+                            <a title="	Phones, computers &amp; Elect..." class="linkshelf-cat" href="/ad?searchString=&catagory=&Area=&pro=Blochistan">
+                                <strong class="ellipsis">	Blochistan</strong>
+
+                            </a>
+                        </span>
+                    </li>
+
+
+
+                </ul>
+
+
+
+            </div>
+          
+            <section class="list_container">
+
+                    <nav class="nohistory">
+
+
+                     <a href="/ad"  > <span accesskey="a" class="first active list_tab">
+                            <strong>All Adversitments&nbsp;-&nbsp;</strong> Click to check detail
+                        
+                         </span>
+
+                         <a class="list_tab" title="Private" href="" accesskey="p">
+                            Most Popular
+                         </a>
+
+                @*        <span accesskey="p" class="active >
+         <strong>Most Popular</strong>
+     </span>
+    </a>
+
+*@ 
+                       
+                    </nav>
+</section>
+
+            <div class="list_box">
+                <div class="list_options">
+
+         
+
+                    <div class="sorting"style="padding:3px">
+
+                     
+                       
+                                <a id="sort_price" href="/ad?sort=2" title="Show cheapest first">
+                                    Show cheapest 
+                                </a>
+                            
+
+                        </div>
+                    </div>
+
+                        <div id="list_item_thumbs">
+
+
+
+
+
+
+
+
+
+
+
+                            <div>
+                                @foreach (var item in Model)
+                                {
+
+                                    @Html.Partial("_Auctiontile", item)
+                                   
+                                }
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="pagination">
+
+
+
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.PageNumbersOnly)
+
+
+
+                    </div>
+
+
+                </div>
+                <aside class="sidebar">
+
+
+
+
+
+
+                    <a rel="nofollow" class="ai_btn_link" href="/ad/Create"><div class="ai_btn">Post your free ad!</div></a>
+
+
+
+
+
+
+
+
+
+
+                    <div class="side_box" style="height: 400px">
+                        <h3>PAKSELL Updates ..</h3>
+                        <div class="side-content" id="side-content" style="display: block; position: absolute">
+                          
+                            <div style="float:left">
+                        
+                              <a href="@Session["2"]" > <img src="Images/@Session["1"]" width="200px" height="500px "></a>
+
+                              
+                        
+                             
+
+
+
+
+                                       
+
+                           @*     <marquee behavior="scroll" direction="Up" onmouseover="this.setAttribute('scrollamount', 1, 0);" onmouseout="this.setAttribute('scrollamount', 3, 0);">
+                          
+
+
+                        
+
+                                    @foreach (var item in Model)
+                                    {
+
+                                        @Html.Partial("sidebar", item)
+                                    }
+                                    <br />
+
+                                </marquee>
+                                *@
+
+</div>
+                                <div id="likebtn" style="float:none; margin-left: 0px">
+
+                                    <iframe src="./For sale in Lahore   Asani.com.pk_files/like.htm" scrolling="no" frameborder="0" width="100px" height="20px"></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </aside>
+            </div>
+
+
+@Scripts.Render("~/bundles/jquery")
+
+<script type="text/javascript">
+  $(document).ready(function () {
+
+        var i = setInterval("reloadpage()", 30000)
+
+    })
+
+
+    function reloadpage() {
+        location.reload("ad/ab",reloadpage);
+
+    }
+    // every 3 sec
+    
+
+</script>
+
+
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+@Styles.Render("~/Content/themes/base/jquery-ui.css")
+<script>
+    $(document).ready(function () {
+        var url = "";
+        $("#dialog-alert").dialog({
+            autoOpen: false,
+            resizable: false,
+            height: 170,
+            width: 350,
+            show: { effect: 'drop', direction: "up" },
+            modal: true,
+            draggable: true,
+            open: function (event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
+            },
+            buttons: {
+                "OK": function () {
+                    $(this).dialog("close");
+
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        if ('@TempData["msg"]' != "") {
+            $("#dialog-alert").dialog('open');
+        }
+
+        $("#dialog-edit").dialog({
+            title: 'Create User',
+            autoOpen: false,
+            resizable: false,
+            width: 400,
+            show: { effect: 'drop', direction: "up" },
+            modal: true,
+            draggable: true,
+            open: function (event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
+                $(this).load(url);
+            }
+        });
+
+        $("#dialog-confirm").dialog({
+            autoOpen: false,
+            resizable: false,
+            height: 170,
+            width: 350,
+            show: { effect: 'drop', direction: "up" },
+            modal: true,
+            draggable: true,
+            open: function (event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
+
+            },
+            buttons: {
+                "OK": function () {
+                    $(this).dialog("close");
+                    window.location.href = url;
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $("#dialog-detail").dialog({
+            title: 'View User',
+            autoOpen: false,
+            resizable: false,
+            width: 400,
+            show: { effect: 'drop', direction: "up" },
+            modal: true,
+            draggable: true,
+            open: function (event, ui) {
+                $(".ui-dialog-titlebar-close").hide();
+                $(this).load(url);
+            },
+            buttons: {
+                "Close": function () {
+                    $(this).dialog("close");
+                }
+            }
+        });
+
+        $("#lnkCreate").live("click", function (e) {
+            //e.preventDefault(); //use this or return false
+            url = $(this).attr('href');
+            $("#dialog-edit").dialog('open');
+
+            return false;
+        });
+
+        $(".lnkEdit").live("click", function (e) {
+            // e.preventDefault(); use this or return false
+            url = $(this).attr('href');
+            $(".ui-dialog-title").html("Update User");
+            $("#dialog-edit").dialog('open');
+
+            return false;
+        });
+
+        $(".lnkDelete").live("click", function (e) {
+            // e.preventDefault(); use this or return false
+            url = $(this).attr('href');
+            $("#dialog-confirm").dialog('open');
+
+            return false;
+        });
+
+        $(".lnkDetail").live("click", function (e) {
+            // e.preventDefault(); use this or return false
+            url = $(this).attr('href');
+            $("#dialog-detail").dialog('open');
+
+            return false;
+        });
+
+        $("#btncancel").live("click", function (e) {
+            $("#dialog-edit").dialog("close");
+            return false;
+        });
+    });
+</script>
+<div id="dialog-alert" style="display: none">
+    <p>
+        @TempData["msg"]!
+    </p>
+</div>
+
+<div id="dialog-confirm" style="display: none">
+    <p>
+        <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+        Are you sure to delete?
+    </p>
+</div>
+
+<div id="dialog-edit" style="display: none">
+</div>
+<div id="dialog-detail" style="display: none">
+</div>
+
+
+
+
+
+
+
+
+

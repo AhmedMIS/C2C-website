@@ -1,0 +1,154 @@
+﻿@model sql4.Models.user
+
+@{
+    ViewBag.Title = "Register";
+}
+
+
+@{
+    Layout = "~/Views/Shared/_Layoutp.cshtml";
+}
+
+
+
+@Styles.Render("~/Content/ai.css")
+@Styles.Render("~/Content/pk.css")
+@Styles.Render("~/Content/compk.css")
+@Scripts.Render("~/bundles/jqueryval")
+@Styles.Render("~/Content/mypages.css")
+
+
+<h2>Register</h2>
+
+<div class="columns app">
+    <section class="widecolumn">
+        <div class="mypages-wrap-one mypages-create">
+            <div class="mypages-headbar">
+                <i class="sprite_icon_login_create_profile"></i>
+                <div class="mypages-headbar-heading">
+                    <h1>Create a PakSell.com.pk account <span class="mypages-headbar-heading-new">New!</span></h1>
+                    <h2>All your ads and favourites in one place, <strong>for free!</strong></h2>
+
+
+                </div>
+            </div>
+
+            <div id="err_cleared_by" class="error_label" style="display: none">
+                <span class="msg_warning nohistory"></span>
+            </div>
+            <div class="form">
+
+
+
+
+
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+
+
+                        <!-------------------------------------->
+                        <div class="row input">
+                            <div class="col_left">
+                                @Html.LabelFor(model => model.name):
+                            </div>
+                            <div class="col_right">
+                                @Html.EditorFor(model => model.name)
+                                @Html.ValidationMessageFor(model => model.name)
+                            </div>
+                        </div>
+
+                        <div class="row input">
+                            <div class="col_left">
+                                @Html.LabelFor(model => model.e_mail):
+                            </div>
+                            <div class="col_right">
+                                @Html.EditorFor(model => model.e_mail)
+                                @Html.ValidationMessageFor(model => model.e_mail)
+                            </div>
+                        </div>
+
+
+                        <div class="row input">
+                            <div class="col_left">
+                                @Html.LabelFor(model => model.password):
+                            </div>
+                            <div class="col_right">
+                                @Html.EditorFor(model => model.password)
+                                @Html.ValidationMessageFor(model => model.password)
+                            </div>
+                        </div>
+
+
+
+                        <div class="row input">
+                            <div class="col_left">
+                                @Html.LabelFor(model => model.cpass):
+                            </div>
+                            <div class="col_right">
+                                @Html.EditorFor(model => model.cpass)
+                                @Html.ValidationMessageFor(model => model.cpass)
+                            </div>
+                        </div>
+
+
+
+                        <div class="row input">
+                            <div class="col_left">
+
+
+
+                            </div>
+                            <div class="col_right">
+
+                                <input type="submit" value="Create" />
+                            </div>
+                        </div>
+
+                        <h1>@ViewBag.Message</h1>
+                    </fieldset>
+                }
+</div>
+            </div>
+    </section>
+    <aside class="sidebar">
+
+
+
+
+
+
+        <div class="side_box">
+            <h3>Manage Your Add</h3>
+            <ul class="bullets">
+                <li class="list">View Your Add</li>
+                <li class="list">Delete Your Add</li>
+                <li class="list">Post new Add even faster</li>
+            </ul>
+        </div>
+        <div class="side_box">
+            <h3>New Search</h3>
+            <ul class="bullets">
+                <li class="list">You can search your Add</li>
+                <li class="list">Will modify you search</li>
+                <li class="list">Delete Your Search</li>
+                <li class="list">Get Runtime Respose of your Search</li>
+            </ul>
+        </div>
+
+
+
+
+
+    </aside>
+
+</div>
+
+
+
+    </div>

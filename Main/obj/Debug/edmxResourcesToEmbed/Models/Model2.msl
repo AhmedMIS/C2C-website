@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BSModel1StoreContainer" CdmEntityContainer="BSEntities4">
+    <EntitySetMapping Name="ads">
+      <EntityTypeMapping TypeName="BSModel1.ad">
+        <MappingFragment StoreEntitySet="ads">
+          <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+          <ScalarProperty Name="catagory" ColumnName="catagory" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="url1" ColumnName="url1" />
+          <ScalarProperty Name="url2" ColumnName="url2" />
+          <ScalarProperty Name="url3" ColumnName="url3" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="areas">
+      <EntityTypeMapping TypeName="BSModel1.area">
+        <MappingFragment StoreEntitySet="area">
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Iusers">
+      <EntityTypeMapping TypeName="BSModel1.Iuser">
+        <MappingFragment StoreEntitySet="Iuser">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Scat" ColumnName="Scat" />
+          <ScalarProperty Name="Sitem" ColumnName="Sitem" />
+          <ScalarProperty Name="Sphone" ColumnName="Sphone" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="area" ColumnName="area" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="BSModel1.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="enable" ColumnName="enable" />
+          <ScalarProperty Name="cpass" ColumnName="cpass" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

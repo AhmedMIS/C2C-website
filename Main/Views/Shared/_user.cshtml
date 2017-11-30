@@ -1,0 +1,74 @@
+﻿@model sql4.Models.user
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    @Styles.Render("~/Content/comPk.css")
+    @Styles.Render("~/Content/link.css")
+    @Styles.Render("~/Content/Pk.css")
+
+
+
+
+
+
+</head>
+
+<div id="list_item_thumbs">
+
+
+    <div class="item">
+        
+
+        <abbr class="date dtstart value item_age" title="@Model.user_id">
+            <br>
+        </abbr>
+
+        <div class="item_info" style="float:left; ">
+
+            <h3 class="ellipsis item_subject"><a href="">@Model.name</a></h3>
+
+            <p class="item_teaser">
+                @Model.e_mail
+            </p>
+
+            <div class="item_segments clean_links nohistory">
+                <small>
+
+
+                   
+
+
+
+
+                    @Model.password
+                    
+                </small>
+
+
+              
+
+
+
+
+
+            </div>
+        </div>
+
+        <div class="item_price" style="padding-left:90px">
+            <span class="price_span" >
+
+
+
+                <h4><a href="/Regester/u_ad?id=@Model.user_id&name=@Model.name" style="float:left;">View Ads</a></h4>
+                <h4><a href="/Regester/user_Delete?id=@Model.user_id">Delete</a></h4>
+
+
+            </span>
+        </div>
+
+
+    </div>
+
+</div>
